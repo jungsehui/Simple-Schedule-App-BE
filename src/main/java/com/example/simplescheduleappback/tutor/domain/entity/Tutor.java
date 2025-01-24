@@ -47,4 +47,16 @@ public class Tutor {
         this.username = username;
         this.password = password;
     }
+
+    public void modifyTutor(
+            final String name,
+            final String phoneNumber,
+            final String username,
+            final String password
+    ) {
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.username = username;
+        this.password = password;
+    }
 }
