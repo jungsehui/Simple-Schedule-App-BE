@@ -4,6 +4,7 @@ import com.example.simplescheduleappback.tutor.domain.entity.Tutor;
 import com.example.simplescheduleappback.tutor.domain.repository.TutorRepository;
 import com.example.simplescheduleappback.tutor.dto.request.CreateTutorRequest;
 import com.example.simplescheduleappback.tutor.dto.request.UpdateTutorRequest;
+import com.example.simplescheduleappback.tutor.dto.response.ReadTutorResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,6 +25,14 @@ public class TutorService {
                 .build();
 
         return tutorRepository.save(tutor).getTutorId();
+    }
+
+    @Transactional
+    public ReadTutorResponse getTutorInfo(Long tutorId) {
+        Tutor tutor = tutorRepository.findByTutorId(tutorId)
+                .orElseThrow();
+
+        return ReadTutorResponse.from(tutor);
     }
 
     @Transactional
