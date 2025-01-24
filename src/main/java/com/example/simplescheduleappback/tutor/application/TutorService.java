@@ -49,4 +49,9 @@ public class TutorService {
 
         return tutorRepository.save(tutor).getTutorId();
     }
+
+    @Transactional
+    public void deleteTutor(Long tutorId) {
+        tutorRepository.deleteById(tutorId);
+    }
 }
