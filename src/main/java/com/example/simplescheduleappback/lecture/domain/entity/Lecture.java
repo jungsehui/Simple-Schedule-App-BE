@@ -22,7 +22,7 @@ public class Lecture {
     @Column(name = "lecture_id")
     private Long lectureId;
 
-    @Column(name = "end_time", nullable = false)
+    @Column(name = "start_time", nullable = false)
     private LocalDateTime startTime;
 
     @Column(name = "end_time", nullable = false)
