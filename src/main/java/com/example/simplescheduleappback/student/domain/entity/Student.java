@@ -1,11 +1,14 @@
 package com.example.simplescheduleappback.student.domain.entity;
 
 import com.example.simplescheduleappback.lecture.domain.entity.Lecture;
+import com.example.simplescheduleappback.lecture.domain.entity.LectureStudent;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Getter
 @NoArgsConstructor
@@ -19,24 +22,21 @@ public class Student {
     @Column(name = "student_id")
     private Long studentId;
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "phone_number")
+    @Column(name = "phone_number", nullable = false)
     private String phoneNumber;
 
-    @ManyToOne
-    @JoinColumn(name = "lecture_id", nullable = false)
-    private Lecture lecture;
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<LectureStudent> lectureStudents;
 
     @Builder
     public Student(
             final String name,
-            final String phoneNumber,
-            final Lecture lecture
+            final String phoneNumber
     ) {
         this.name = name;
         this.phoneNumber = phoneNumber;
-        this.lecture = lecture;
     }
 }
