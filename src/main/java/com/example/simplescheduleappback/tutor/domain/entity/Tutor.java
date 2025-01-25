@@ -7,6 +7,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,7 +18,7 @@ public class Tutor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "tutor_id")
+    @Column(name = "tutor_id", nullable = false, updatable = false)
     private Long tutorId;
 
     @Column(name = "name")
@@ -31,9 +33,8 @@ public class Tutor {
     @Column(name = "password")
     private String password;
 
-    @OneToOne
-    @JoinColumn(name = "lecture_id", nullable = false)
-    private Lecture lecture;
+    @OneToMany(mappedBy = "tutor", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Lecture> lectures;
 
     @Builder
     private Tutor(
