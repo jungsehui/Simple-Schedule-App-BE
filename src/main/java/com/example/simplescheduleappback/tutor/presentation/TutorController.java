@@ -5,7 +5,6 @@ import com.example.simplescheduleappback.tutor.dto.request.CreateTutorRequest;
 import com.example.simplescheduleappback.tutor.dto.request.UpdateTutorRequest;
 import com.example.simplescheduleappback.tutor.dto.response.ReadTutorResponse;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -36,12 +35,12 @@ public class TutorController {
     @PutMapping("/tutors/{tutorId}")
     public ResponseEntity<Void> updateTutor(@PathVariable Long tutorId, @RequestBody UpdateTutorRequest updateTutorRequest) {
         log.info("method: updateTutor, requested id: {}", tutorId);
-        Long updatedTutorId = tutorService.modifyTutor(tutorId, updateTutorRequest);
+        tutorService.modifyTutor(tutorId, updateTutorRequest);
         return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/tutors/{tutorId}")
-    public ResponseEntity<Void> deleteTutor(@@PathVariable Long tutorId) {
+    public ResponseEntity<Void> deleteTutor(@PathVariable Long tutorId) {
         log.info("method: deleteTutor, requested id: {}", tutorId);
         tutorService.removeTutor(tutorId);
         return ResponseEntity.ok().build();
