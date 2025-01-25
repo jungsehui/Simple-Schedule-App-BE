@@ -2,13 +2,17 @@ package com.example.simplescheduleappback.tutor.presentation;
 
 import com.example.simplescheduleappback.tutor.application.TutorService;
 import com.example.simplescheduleappback.tutor.dto.request.CreateTutorRequest;
+import com.example.simplescheduleappback.tutor.dto.request.UpdateTutorRequest;
 import com.example.simplescheduleappback.tutor.dto.response.ReadTutorResponse;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 
+@Slf4j
 @RestController
 @RequiredArgsConstructor
 public class TutorController {
@@ -17,13 +21,29 @@ public class TutorController {
 
     @PostMapping("/tutors")
     public ResponseEntity<Void> createTutor(@RequestBody CreateTutorRequest createTutorRequest) {
-        Long tutorId = tutorService.registerTutor(createTutorRequest);
-        return ResponseEntity.created(URI.create("/tutors/" + tutorId)).build();
+        log.info("method: createTutor, requested username: {}", createTutorRequest.username());
+        Long createdTutorId = tutorService.registerTutor(createTutorRequest);
+        return ResponseEntity.created(URI.create("/tutors/" + createdTutorId)).build();
     }
 
     @GetMapping("/tutors/{tutorId}")
     public ResponseEntity<ReadTutorResponse> readTutor(@PathVariable Long tutorId) {
+        log.info("method: readTutor, requested id: {}", tutorId);
         ReadTutorResponse readTutorResponse = tutorService.showTutor(tutorId);
         return ResponseEntity.ok(readTutorResponse);
+    }
+
+    @PutMapping("/tutors/{tutorId}")
+    public ResponseEntity<Void> updateTutor(@PathVariable Long tutorId, @RequestBody UpdateTutorRequest updateTutorRequest) {
+        log.info("method: updateTutor, requested id: {}", tutorId);
+        Long updatedTutorId = tutorService.modifyTutor(tutorId, updateTutorRequest);
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping("/tutors/{tutorId}")
+    public ResponseEntity<Void> deleteTutor(@@PathVariable Long tutorId) {
+        log.info("method: deleteTutor, requested id: {}", tutorId);
+        tutorService.removeTutor(tutorId);
+        return ResponseEntity.ok().build();
     }
 }
