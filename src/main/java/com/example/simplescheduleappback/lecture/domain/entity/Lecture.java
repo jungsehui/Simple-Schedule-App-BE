@@ -4,6 +4,7 @@ import com.example.simplescheduleappback.student.domain.entity.Student;
 import com.example.simplescheduleappback.tutor.domain.entity.Tutor;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -36,5 +37,17 @@ public class Lecture {
     private Tutor tutor;
 
     @OneToMany(mappedBy = "lecture", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Student> students;
+    private List<LectureStudent> lectureStudents;
+
+    @Builder
+    public Lecture(
+            final LocalDateTime startTime,
+            final LocalDateTime endTime,
+            final String memo,
+            final Tutor tutor) {
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.memo = memo;
+        this.tutor = tutor;
+    }
 }
