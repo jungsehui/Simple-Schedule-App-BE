@@ -31,7 +31,8 @@ public class Lecture {
     @Column(name = "memo")
     private String memo;
 
-    @OneToOne(mappedBy = "lecture", cascade = CascadeType.ALL, orphanRemoval = true)
+    @ManyToOne
+    @JoinColumn(name = "tutor_id", nullable = false)
     private Tutor tutor;
 
     @OneToMany(mappedBy = "lecture", cascade = CascadeType.ALL, orphanRemoval = true)
