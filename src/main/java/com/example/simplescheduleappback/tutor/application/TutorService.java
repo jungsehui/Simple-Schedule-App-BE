@@ -28,7 +28,7 @@ public class TutorService {
     }
 
     @Transactional
-    public ReadTutorResponse getTutorInfo(Long tutorId) {
+    public ReadTutorResponse showTutor(Long tutorId) {
         Tutor tutor = tutorRepository.findByTutorId(tutorId)
                 .orElseThrow();
 
@@ -51,7 +51,7 @@ public class TutorService {
     }
 
     @Transactional
-    public void deleteTutor(Long tutorId) {
+    public void removeTutor(Long tutorId) {
         tutorRepository.deleteById(tutorId);
     }
 }
