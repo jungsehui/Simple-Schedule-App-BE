@@ -3,7 +3,7 @@ spring:
     name: SimpleScheduleAppBack
 
   datasource:
-    url: jdbc:mysql://localhost:3306/your_database_name
-    username: your_username
-    password: your_password
+    url: jdbc:mysql://localhost:3306/simple_schedule_app
+    username: root
+    password: maketws1!
     driver-class-name: com.mysql.cj.jdbc.Driver
