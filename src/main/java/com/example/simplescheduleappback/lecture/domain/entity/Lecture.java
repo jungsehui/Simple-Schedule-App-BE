@@ -23,6 +23,9 @@ public class Lecture {
     @Column(name = "lecture_id")
     private Long lectureId;
 
+    @Column(name = "name", nullable = false)
+    private String name;
+
     @Column(name = "start_time", nullable = false)
     private LocalDateTime startTime;
 
@@ -41,10 +44,13 @@ public class Lecture {
 
     @Builder
     public Lecture(
+            final String name,
             final LocalDateTime startTime,
             final LocalDateTime endTime,
             final String memo,
-            final Tutor tutor) {
+            final Tutor tutor
+    ) {
+        this.name = name;
         this.startTime = startTime;
         this.endTime = endTime;
         this.memo = memo;
