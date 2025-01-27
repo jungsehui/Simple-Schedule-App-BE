@@ -1,4 +1,4 @@
-package com.example.simplescheduleappback.tutor.dto.response;
+package com.example.simplescheduleappback.tutor.presentation.dto.response;
 
 import com.example.simplescheduleappback.tutor.domain.entity.Tutor;
 

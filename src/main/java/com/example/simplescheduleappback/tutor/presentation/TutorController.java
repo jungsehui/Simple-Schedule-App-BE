@@ -1,9 +1,9 @@
 package com.example.simplescheduleappback.tutor.presentation;
 
 import com.example.simplescheduleappback.tutor.application.TutorService;
-import com.example.simplescheduleappback.tutor.dto.request.CreateTutorRequest;
-import com.example.simplescheduleappback.tutor.dto.request.UpdateTutorRequest;
-import com.example.simplescheduleappback.tutor.dto.response.ReadTutorResponse;
+import com.example.simplescheduleappback.tutor.presentation.dto.request.CreateTutorRequest;
+import com.example.simplescheduleappback.tutor.presentation.dto.request.UpdateTutorRequest;
+import com.example.simplescheduleappback.tutor.presentation.dto.response.ReadTutorResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;

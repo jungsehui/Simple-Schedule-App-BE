@@ -2,9 +2,9 @@ package com.example.simplescheduleappback.tutor.application;
 
 import com.example.simplescheduleappback.tutor.domain.entity.Tutor;
 import com.example.simplescheduleappback.tutor.domain.repository.TutorRepository;
-import com.example.simplescheduleappback.tutor.dto.request.CreateTutorRequest;
-import com.example.simplescheduleappback.tutor.dto.request.UpdateTutorRequest;
-import com.example.simplescheduleappback.tutor.dto.response.ReadTutorResponse;
+import com.example.simplescheduleappback.tutor.presentation.dto.request.CreateTutorRequest;
+import com.example.simplescheduleappback.tutor.presentation.dto.request.UpdateTutorRequest;
+import com.example.simplescheduleappback.tutor.presentation.dto.response.ReadTutorResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

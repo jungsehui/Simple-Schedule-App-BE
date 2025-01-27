@@ -1,4 +1,4 @@
-package com.example.simplescheduleappback.tutor.dto.request;
+package com.example.simplescheduleappback.tutor.presentation.dto.request;
 
 public record CreateTutorRequest(
 
